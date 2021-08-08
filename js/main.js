@@ -54,7 +54,7 @@ const getRandomElement = function(arr) {
 
 let numberForAvatar = 0;
 const getUniqueAvatarSrc = function() {
-  for (let i = 1; i <= SIMILAR_AD_COUNT; i++) {
+  for (let index = 1; index <= SIMILAR_AD_COUNT; index++) {
     numberForAvatar += 1;
     if (numberForAvatar < 10) {
       return`img/avatars/user0${numberForAvatar}.png`;
@@ -70,8 +70,8 @@ const getRandomArray = (array) => {
 };
 
 const getAdvt = function() {
-  const x = getRandomFloat(35.65000, 35.70000, 5);
-  const y = getRandomFloat(139.7000, 139.80000, 5);
+  const coordX = getRandomFloat(35.65000, 35.70000, 5);
+  const coordY = getRandomFloat(139.7000, 139.80000, 5);
 
   return {
     author: {
@@ -79,7 +79,7 @@ const getAdvt = function() {
     },
     offer: {
       title: getRandomElement(TITLES),
-      address: `${x}, ${y}`,
+      address: `${coordX}, ${coordY}`,
       price: getRandomInt(1000, 100000),
       type: getRandomElement(TYPES),
       rooms: getRandomInt(1, 10),
@@ -91,12 +91,11 @@ const getAdvt = function() {
       photos: getRandomArray(PHOTOS),
     },
     location: {
-      lat: x,
-      lng: y,
-    }
+      lat: coordX,
+      lng: coordY,
+    },
   };
 };
 
 const arrOfAdvt = new Array(SIMILAR_AD_COUNT).fill(null).map(() => getAdvt());
 
-console.log(arrOfAdvt);
